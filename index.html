@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flip-Coin/Coin-Toss</title>
+  </head>
+  <body>
+    <center>
+      <h1>Heads or Tails!</h1>
+      <img class="img" src="./images/coin1.png" /><br />
+      <button id="tossButton" class="button-32">Flip the coin!</button>
+    </center>
+    <style>
+      h1 {
+        font-family: Georgia, "Times New Roman", Times, serif;
+      }
+      img {
+        padding: 2%;
+      }
+      .button-32 {
+        background-color: #e0643e;
+        border-radius: 12px;
+        color: #f6ecec;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 10px 15px;
+        text-align: center;
+        transition: 200ms;
+        width: 10%;
+        box-sizing: border-box;
+        border: 0;
+        font-size: 16px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+      }
+
+      .button-32:not(:disabled):hover,
+      .button-32:not(:disabled):focus {
+        outline: 0;
+        background: #22c86d;
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2),
+          0 3px 8px 0 rgba(0, 0, 0, 0.15);
+      }
+
+      .button-32:disabled {
+        filter: saturate(0.2) opacity(0.5);
+        -webkit-filter: saturate(0.2) opacity(0.5);
+        cursor: not-allowed;
+      }
+      @media only screen and (max-width: 1329px) {
+        .button-32 {
+          width: 13%;
+        }
+        @media only screen and (max-width: 1023px) {
+          .button-32 {
+            width: 20%;
+          }
+        }
+        @media only screen and (max-width: 672px) {
+          .button-32 {
+            width: 30%;
+          }
+        }
+
+        @media only screen and (max-width: 457px) {
+          .button-32 {
+            width: 50%;
+          }
+        }
+      }
+    </style>
+    <script>
+      function tossCoin() {
+        var randomNumber1 = Math.floor(Math.random() * 2) + 1;
+        var randomCoinImage = "coin" + randomNumber1 + ".png";
+        var randomImageSource = "images/" + randomCoinImage;
+        var image = document.querySelectorAll("img")[0];
+        image.setAttribute("src", randomImageSource);
+
+        if (randomNumber1 === 1) {
+          document.querySelector("h1").innerHTML = "Head!";
+        } else {
+          document.querySelector("h1").innerHTML = "Tail!";
+        }
+      }
+
+      const Button = document.getElementById("tossButton");
+      tossButton.addEventListener("click", tossCoin);
+    </script>
+  </body>
+</html>
